@@ -1,0 +1,19 @@
+SuperHeroes,
+superman,altura,205.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
+spiderman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
+capitanamerica,altura,505.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
+batman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
+finArchivo
+
+
+
+
+
+Debe de respetar la forma en que se ingresan las cartas.
+-Siendo el primer item el tipo de carta de la carta seguido de una coma.
+-Agregando las cartas en el reglon siguiente renglon(segundo reglon dentro del archivo)
+- El formato que se debera seguir para ingresar correctamente una carta debe ser la siguiente:
+nombre_de_la_carta,nombre_atributo,valor_atributo,contienda_atributo,medida_del_atributo.
+Los atributos se agregan uno a continuacion del otro, separados por comas. La cantidad de atributos deben ser como minimo 4 con este incluido, y como maximo 7 con este incluido. Se deberan crear la misma cantidad de atributos para cada carta, ademas de que estos deberan tener el mismo orden, nombre y contienda que se hayan ingresado  para la primera carta.
+De otra forma no se permitira cargar el mazo.
+-Al finalizar el agregado de todas las cartas , debera de agregarse la frase "finArchivo". Ubicandola en el ultimo renglon,luego de la ultima carta. Esta frase no debera estar sucedida o antesedida por ningun tipo de caracter.
