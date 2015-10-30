@@ -70,7 +70,7 @@ private static Mazo armarMazoDesdeArchivo()
 	 int mazoDefault=-1;
 	 String ruta;
 	 while(mazoDefault!=1 && mazoDefault!=2){System.out.println ("desea cargar maso por defecto. si=1 , no=2");mazoDefault=cargaInt();}
-		if(mazoDefault==1){ruta="/home/francoe/tudai/programacion2/Tp_especialFranco/src/com/faller/juegoCartas/cartas.txt";}
+		if(mazoDefault==1){ruta="/home/francoe/TUDAIprogra2/prog2/src/com/faller/juegoCartas/cartas.txt";}
 		else{  ruta= cargaStr(); }
 
     

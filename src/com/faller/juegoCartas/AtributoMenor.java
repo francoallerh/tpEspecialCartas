@@ -7,13 +7,20 @@ public class AtributoMenor extends Atributo {
 		super(nombre, valor, operacion,unidad);
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
-	public boolean compitePorContienda(Atributo atriCarta2) 
-	{
-				if(getValor()<atriCarta2.getValor()){return true;}
-				return false;
-	}
-		 
+	public int competencia(Atributo atriCarta2) {
+
+		System.out.println("Atributo por el cual se compite: " + getNombre()
+				+ "\n" + "Contienda: " + getOperacion() + "\n");
+
+		if (getValor() < atriCarta2.getValor()) {
+			return 1;
+		} else if (getValor() == atriCarta2.getValor()) {
+			return 0;
+		}
+
+		return 2;
+	}	 
 
 }
