@@ -2,16 +2,16 @@ package com.faller.juegoCartas;
 
 import java.util.ArrayList;
 
-public class FormulaCocktail extends Formula {
-private ArrayList<Formula> formulas;
+public class PosimaCocktail extends Posima {
+private ArrayList<Posima> formulas;
 
-	public FormulaCocktail(String nombre, double valor){
+	public PosimaCocktail(String nombre, double valor){
 		super(nombre, valor);
-		formulas=new ArrayList<Formula> ();
+		formulas=new ArrayList<Posima> ();
 	}
 	@Override
 	public double calcular(Atributo a, double suma) {
-	for(Formula f: formulas){
+	for(Posima f: formulas){
 		suma+=f.calcular(a, suma);
 	}
 		return suma;

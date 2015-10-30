@@ -1,10 +1,10 @@
 package com.faller.juegoCartas;
 
-public abstract class Formula {
+public abstract class Posima {
 private String nombre;
 private Double valor;
 
-public Formula(String nombre,Double valor){
+public Posima(String nombre,Double valor){
 	this.nombre=nombre;
 	this.valor=valor;
 }
