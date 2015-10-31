@@ -19,7 +19,7 @@ public class Mazo {
 	private int cantidad;
 	private ArrayList<Carta> cartas;
    	private ArrayList<Carta> cartasEnJuego;
-
+	private ArrayList<PosimaGenerica> posimas;
    	
 public Mazo(String nombre, int cantidad) {
 		this.nombre = nombre;
@@ -135,12 +135,20 @@ private boolean existeCarta(Carta x)
 		jugadorQueCede.borrarCarta(jugadorQueCede.getCarta(0));
 		
 	}
-
+	private  int enteroRandom(int min, int max) {
+		Random rand = new Random();
+		return (rand.nextInt((max - min) + 1) + min);
+	}
+	
 	
 	public void repartirMazo(Jugador p1, Jugador p2) {
 		int i=1;
 		for(Carta c: cartas)
 			{
+			if(enteroRandom(1,10)==5){
+				c.SetPosima(posimas.get(0));
+				posimas.remove(0);
+			}
 			if((i%2==0)){p1.agregarCarta(c); }
 			else{p2.agregarCarta(c);}
 			i++;

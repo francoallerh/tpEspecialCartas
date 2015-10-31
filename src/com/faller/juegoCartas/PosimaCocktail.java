@@ -2,19 +2,21 @@ package com.faller.juegoCartas;
 
 import java.util.ArrayList;
 
-public class PosimaCocktail extends Posima {
-private ArrayList<Posima> formulas;
+public class PosimaCocktail extends PosimaGenerica {
+private ArrayList<PosimaGenerica> pociones;
 
-	public PosimaCocktail(String nombre, double valor){
-		super(nombre, valor);
-		formulas=new ArrayList<Posima> ();
+	public PosimaCocktail(String nombre){
+		super(nombre);
+		pociones=new ArrayList<PosimaGenerica> ();
+		pociones.add(new PosimaNoCompuesta("cualca",0.0));
+		
 	}
 	@Override
-	public double calcular(Atributo a, double suma) {
-	for(Posima f: formulas){
-		suma+=f.calcular(a, suma);
+	public void calcular(Atributo a) {
+	for(PosimaGenerica f: pociones){
+	 f.calcular(a);
 	}
-		return suma;
+		
 	}
 
 }

@@ -3,17 +3,18 @@ package com.faller.juegoCartas;
 public abstract class Atributo implements Comparable<Atributo> {
 	private String nombre;
 	private double valor;
-	private String contienda;
 	private String unidad;
+	private String contienda;
 
-	public Atributo(String nombre, double valor, String operacion, String unidad) {
+	public Atributo(String nombre, double valor,String contienda, String unidad) {
 		this.nombre = nombre.toLowerCase();
 		this.valor = valor;
-		this.contienda = operacion;
 		this.unidad = unidad.toLowerCase();
+		this.contienda=contienda;
 
 	}
-
+	
+	public abstract Atributo copiar(); 
 
 	public String getUnidad() {
 		return unidad;
@@ -40,12 +41,12 @@ public abstract class Atributo implements Comparable<Atributo> {
 		this.valor = valor;
 	}
 
-	public String getOperacion() {
+	public String getContienda() {
 		return contienda;
 	}
 
-	public void setOperacion(String operacion) {
-		this.contienda = operacion;
+	public void setContienda(String contienda) {
+		this.contienda = contienda;
 	}
 
 	@Override

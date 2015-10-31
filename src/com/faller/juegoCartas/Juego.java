@@ -199,11 +199,11 @@ private static Mazo armarMazoGenerico()
 							  do{
 									
 										Atributo a= baraja.getCarta(0).getAtributo(cantidadAtributos);
-										if(a.getOperacion().equals(">"))
+										if(a.getContienda().equals(">"))
 											{
-												c.agregarAtributo(new AtributoMayor(a.getNombre(),enteroRandom(2, 200) ,a.getOperacion() ,a.getUnidad()));
+												c.agregarAtributo(new AtributoMayor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
 											}else{
-													c.agregarAtributo(new AtributoMenor(a.getNombre(),enteroRandom(2, 200) ,a.getOperacion() ,a.getUnidad()));
+													c.agregarAtributo(new AtributoMenor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
 												 }
 									cantidadAtributos++;
 								   }while((cantAtrisElegidos!=cantidadAtributos));

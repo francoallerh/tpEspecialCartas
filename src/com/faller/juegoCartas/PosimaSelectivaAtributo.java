@@ -1,6 +1,6 @@
 package com.faller.juegoCartas;
 
-public class PosimaSelectivaAtributo extends Posima {
+public class PosimaSelectivaAtributo extends PosimaNoCompuesta {
 
 	public PosimaSelectivaAtributo(String nombre, Double valor) {
 		super(nombre, valor);
@@ -8,11 +8,12 @@ public class PosimaSelectivaAtributo extends Posima {
 	}
 
 	@Override
-	public double calcular(Atributo a, double suma) {
+	public double calcular(Atributo a) {
 		if(a.getNombre().equals(super.getNombre())){
-			return suma=a.getValor()+(a.getValor()*super.getValor()/100);
+			return (a.getValor()*super.getValor()/100);
 		}
-		return suma=0;
+		return 0;
+		
 	}
 
 }

@@ -2,17 +2,21 @@ package com.faller.juegoCartas;
 
 public class AtributoMenor extends Atributo {
 
-	public AtributoMenor(String nombre, double valor, String operacion,
-			String unidad) {
-		super(nombre, valor, operacion,unidad);
+	public AtributoMenor(String nombre, double valor, String contienda,String unidad) {
+		super(nombre, valor, contienda, unidad);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Atributo copiar(){
+		Atributo a=new AtributoMenor(this.getNombre(),this.getValor(),this.getContienda(),this.getUnidad());
+		return a;
 	}
 	
 	@Override
 	public int competencia(Atributo atriCarta2) {
 
 		System.out.println("Atributo por el cual se compite: " + getNombre()
-				+ "\n" + "Contienda: " + getOperacion() + "\n");
+				+ "\n" + "Contienda: " + getContienda() + "\n");
 
 		if (getValor() < atriCarta2.getValor()) {
 			return 1;

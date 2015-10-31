@@ -8,9 +8,7 @@ public class Carta {
 	private String nombre;
 	private int cantidadAtributos;
 	private ArrayList<Atributo> atributos;
-	
-	
-	
+	private PosimaGenerica posion=new PosimaNoCompuesta("lala",0.0);
 	
 	public Carta(String nombre,int cantidadAtributos) {
 		this.nombre = nombre.toUpperCase();
@@ -28,7 +26,9 @@ public class Carta {
 	public String getNombre() {
 		return nombre;
 	}
-	
+public void SetPosima(PosimaGenerica p){
+	this.posion=p;
+}
 	public void setNombre(String nombre) {
 		this.nombre = nombre.toUpperCase();
 	}
@@ -49,7 +49,9 @@ public class Carta {
 	public Atributo obtieneAtributo(String nombre) {
 		for (Atributo a : atributos) {
 			if(a.getNombre().equals(nombre)) {
-				return a;
+				Atributo atributoConPosima=a.copiar();
+				posion.calcular(atributoConPosima);
+				return atributoConPosima;
 			}
 		}
 		return null;
@@ -87,7 +89,7 @@ public class Carta {
 												if(a.getNombre().equals(b.getNombre()))
 													{
 														i++;
-														if(!(a.getOperacion().equals(b.getOperacion()))){return false;}
+														if(!(a.getContienda().equals(b.getContienda()))){return false;}
 													}												
 
 											}
