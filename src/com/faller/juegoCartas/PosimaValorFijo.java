@@ -2,14 +2,14 @@ package com.faller.juegoCartas;
 
 public class  PosimaValorFijo extends PosimaNoCompuesta {
 
-	public  PosimaValorFijo(String nombre, Double valor) {
-		super(nombre, valor);
-		// TODO Auto-generated constructor stub
+	public  PosimaValorFijo(String nombre) {
+		super(nombre,5.0);
+	
 	}
 
 	@Override
-	public double calcular(Atributo a) {
-		return 5;
+	public void calcular(Atributo a) {
+		 a.setValor(super.getValor());
 	}
 
 }

@@ -96,6 +96,7 @@ private static Mazo armarMazoDesdeArchivo()
         	posNombre++;
         	read=br.readLine();
         	}
+        
     	System.out.print(baraja.toString());
         if((baraja.cantCartas())%2==0){
         	baraja.setCantidad(baraja.cantCartas());
@@ -113,7 +114,7 @@ private static Mazo armarMazoDesdeArchivo()
     } 
     
 }
-	
+
 
 public static Carta armaCartaDeArchivo(String[] valores) {
 	String nombre=valores[0];
@@ -250,6 +251,42 @@ private static Mazo armarMazoGenerico()
 
 	public String jugar() {
 
+PosionGenerica posion=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion2=new PosimaIncrementa("choripan",100.0);
+PosionGenerica posion3=new PosimaIncrementa("choripan",50.0);
+PosionGenerica posion4=new PosimaDecrementa("choripan",10.0);
+PosionGenerica posion5=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion6=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion7=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion8=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion9=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion10=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion11=new PosimaDecrementa("choripan",100.0);
+PosionGenerica posion12=new PosimaDecrementa("choripan",100.0);
+PosimaCocktail posion13= new PosimaCocktail("cokt1",posion12);
+PosionGenerica posion14= new PosimaCocktail("cokt1",posion12);
+PosionGenerica posion15= new PosimaCocktail("cokt1",posion12);
+PosionGenerica posion16= new PosimaCocktail("cokt1",posion12);
+PosionGenerica posion17= new PosimaValorFijo("impuesto");
+posion13.agregarPosion(posion17);
+posion13.agregarPosion(posion2);
+posion13.agregarPosion(posion3);
+posion13.agregarPosion(posion4);
+//posion13.agregarPosion(posion4);
+baraja.agregarPocion(posion13);
+
+//baraja.agregarPocion(posion);
+//baraja.agregarPocion(posion2);
+//baraja.agregarPocion(posion3);
+//baraja.agregarPocion(posion4);
+//baraja.agregarPocion(posion5);
+//baraja.agregarPocion(posion6);
+//baraja.agregarPocion(posion7);
+//baraja.agregarPocion(posion8);
+//baraja.agregarPocion(posion9);
+//baraja.agregarPocion(posion10);
+//baraja.agregarPocion(posion11);
+baraja.agregarPocion(posion13);
 		if (baraja.mazoCorrecto()) {	
 			int cuentaRondas=0;
 			baraja.repartirMazo(p1, p2);

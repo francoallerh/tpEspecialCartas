@@ -1,9 +1,9 @@
 package com.faller.juegoCartas;
 
-public abstract class PosimaGenerica {
+public abstract class PosionGenerica {
 	private String nombre;
 	
-	public PosimaGenerica(String nombre) {
+	public PosionGenerica(String nombre) {
 		this.nombre=nombre;
 	}
 	public String getNombre() {
@@ -15,6 +15,11 @@ public abstract class PosimaGenerica {
 	}
 	
 	public abstract void calcular(Atributo a);
+	@Override
+	public String toString() {
+		return "PosionGenerica [nombre=" + nombre + "]";
+	}
+
 
 
 }

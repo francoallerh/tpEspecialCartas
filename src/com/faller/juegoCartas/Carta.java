@@ -8,7 +8,7 @@ public class Carta {
 	private String nombre;
 	private int cantidadAtributos;
 	private ArrayList<Atributo> atributos;
-	private PosimaGenerica posion=new PosimaNoCompuesta("lala",0.0);
+	private PosionGenerica posion=new PosimaNoCompuesta("lala",0.0);
 	
 	public Carta(String nombre,int cantidadAtributos) {
 		this.nombre = nombre.toUpperCase();
@@ -26,7 +26,7 @@ public class Carta {
 	public String getNombre() {
 		return nombre;
 	}
-public void SetPosima(PosimaGenerica p){
+public void SetPosima(PosionGenerica p){
 	this.posion=p;
 }
 	public void setNombre(String nombre) {
@@ -109,10 +109,14 @@ public void SetPosima(PosimaGenerica p){
 		return false;
 	}
 	
+
 	@Override
 	public String toString() {
-		return "Carta [nombre=" + nombre + ", atributos=" + atributos + "]";
+		return "Carta [nombre=" + nombre + ", cantidadAtributos="
+				+ cantidadAtributos + ", atributos=" + atributos + ", posion="
+				+ posion + "]";
 	}
+
 	public int getCantidadAtributos() {
 		return cantidadAtributos;
 	}

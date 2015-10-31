@@ -8,8 +8,8 @@ public class PosimaIncrementa extends PosimaNoCompuesta {
 	}
 
 	@Override
-	public double calcular(Atributo a) {
-		return (a.getValor()*super.getValor()/100);
+	public void calcular(Atributo a) {
+		a.setValor(a.getValor()+((a.getValor()*super.getValor()/100)));
 
 	}
 

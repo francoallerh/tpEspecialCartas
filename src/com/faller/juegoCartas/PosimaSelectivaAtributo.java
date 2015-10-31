@@ -8,11 +8,11 @@ public class PosimaSelectivaAtributo extends PosimaNoCompuesta {
 	}
 
 	@Override
-	public double calcular(Atributo a) {
+	public void calcular(Atributo a) {
 		if(a.getNombre().equals(super.getNombre())){
-			return (a.getValor()*super.getValor()/100);
+			a.setValor(a.getValor()-((a.getValor()*super.getValor()/100)));
 		}
-		return 0;
+		
 		
 	}
 

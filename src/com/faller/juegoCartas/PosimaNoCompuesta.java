@@ -1,6 +1,6 @@
 package com.faller.juegoCartas;
 
-public class PosimaNoCompuesta extends PosimaGenerica {
+public class PosimaNoCompuesta extends PosionGenerica {
 private double valor;
 
 public PosimaNoCompuesta(String nombre,Double valor){

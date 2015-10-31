@@ -19,13 +19,14 @@ public class Mazo {
 	private int cantidad;
 	private ArrayList<Carta> cartas;
    	private ArrayList<Carta> cartasEnJuego;
-	private ArrayList<PosimaGenerica> posimas;
+	private ArrayList<PosionGenerica> posimas;
    	
 public Mazo(String nombre, int cantidad) {
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 		cartas = new ArrayList<Carta>(cantidad);
 		cartasEnJuego=new ArrayList<Carta>();
+		posimas=new ArrayList<PosionGenerica>();
 		
 	}
 
@@ -36,7 +37,7 @@ public Mazo(String nombre) {
 	this.nombre = nombre;
 	cartas = new ArrayList<Carta>();
     this.cartasEnJuego=new ArrayList<Carta>();
-   
+    posimas=new ArrayList<PosionGenerica>();
 }
 
 	@Override
@@ -145,10 +146,11 @@ private boolean existeCarta(Carta x)
 		int i=1;
 		for(Carta c: cartas)
 			{
-			if(enteroRandom(1,10)==5){
+			if((posimas.size()!=0)){
+			if((enteroRandom(1,1)==1)){
 				c.SetPosima(posimas.get(0));
 				posimas.remove(0);
-			}
+			}}
 			if((i%2==0)){p1.agregarCarta(c); }
 			else{p2.agregarCarta(c);}
 			i++;
@@ -195,5 +197,8 @@ public void transfiereCartasAlGanador(Jugador jugadorReceptor)
 			eliminarCartasEnJuego();
 	}
 
+public void agregarPocion(PosionGenerica p){
+	posimas.add(p);
+}
 }
 
