@@ -8,6 +8,7 @@ import java.util.Random;
 public class Jugador {
 	private String nombre;
 	private ArrayList<Carta> cartas;
+	private boolean turno;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;
@@ -75,6 +76,14 @@ public class Jugador {
 			i++;
 			}
 		return i;
+	}
+
+	public boolean isTurno() {
+		return turno;
+	}
+
+	public void setTurno(boolean turno) {
+		this.turno = turno;
 	}
 
 	

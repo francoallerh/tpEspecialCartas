@@ -384,33 +384,52 @@ private static Mazo armarMazoGenerico()
 				cuentaRondas++;
 				System.out.print("---------------------------------"+"\n"+"Comienza Ronda "+cuentaRondas+"\n"+"---------------------------------"+"\n");
 				System.out.print("Cantidad de cartas jugador "+p1.getNombre()+" :"+p1.totalDcartas() +"\n"+"Cantidad de cartas jugador "+p2.getNombre()+" :"+p2.totalDcartas()+"\n");
-		
-				switch(turno)
-					{
-						case TURNO_JUGADOR_1:
-						System.out.println("Turno de:"+p1.getNombre()+"\n");
+		if(p1.isTurno()){
+			System.out.println("Turno de:"+p1.getNombre()+"\n");
+			atributoAcompetir=p1.randomAtributo();
+			jugadorTurnoGanado=p1;
+			jugadorPerdedor=p2;
+		}else if(p2.isTurno()){
+			System.out.println("Turno de:"+p2.getNombre()+"\n");
+			atributoAcompetir=p2.randomAtributo();
+			jugadorPerdedor=p1;
+			jugadorTurnoGanado=p2;
+		}else{
+			if((baraja.cartasEnJuegoTieneCartas()))
+				{
+					atributoEnJuego=atributoAcompetir;	
+				}else{
 						atributoAcompetir=p1.randomAtributo();
-						jugadorTurnoGanado=p1;
-						jugadorPerdedor=p2;
-						break;
-						
-						case TURNO_JUGADOR_2:
-						System.out.println("Turno de:"+p1.getNombre()+"\n");
-						atributoAcompetir=p2.randomAtributo();
-						jugadorPerdedor=p1;
-						jugadorTurnoGanado=p2;
-						break;
-						
-						default:
-						if((baraja.cartasEnJuegoTieneCartas()))
-							{
-								atributoEnJuego=atributoAcompetir;	
-							}else{
-									atributoAcompetir=p1.randomAtributo();
-								}
-						jugadorTurnoGanado=p1;
-						jugadorPerdedor=p2;
 					}
+		}
+				
+//				switch(turno)
+//					{
+//						case TURNO_JUGADOR_1:
+//						System.out.println("Turno de:"+p1.getNombre()+"\n");
+//						atributoAcompetir=p1.randomAtributo();
+//						jugadorTurnoGanado=p1;
+//						jugadorPerdedor=p2;
+//						break;
+//						
+//						case TURNO_JUGADOR_2:
+//						System.out.println("Turno de:"+p1.getNombre()+"\n");
+//						atributoAcompetir=p2.randomAtributo();
+//						jugadorPerdedor=p1;
+//						jugadorTurnoGanado=p2;
+//						break;
+//						
+//						default:
+//						if((baraja.cartasEnJuegoTieneCartas()))
+//							{
+//								atributoEnJuego=atributoAcompetir;	
+//							}else{
+//									atributoAcompetir=p1.randomAtributo();
+//								}
+//						
+//					}
+				jugadorTurnoGanado=p1;
+			jugadorPerdedor=p2;
 				rescarta=Competencia(jugadorTurnoGanado, jugadorPerdedor,atributoAcompetir);
 				//rescarta =j1.getCarta(0).obtieneAtributo(atributoAcompetir).competencia(j2.getCarta(0).obtieneAtributo(atributoAcompetir));
 				System.out.println("Jugador "+p1.getNombre()+" :"+p1.getCarta(0).obtieneAtributo(atributoAcompetir).getValor() +"\n"+"Jugador  "+p2.getNombre()+" :"+p2.getCarta(0).obtieneAtributo(atributoAcompetir).getValor()+"\n");
@@ -422,8 +441,10 @@ private static Mazo armarMazoGenerico()
 							baraja.transfiereCartasAlGanador(jugadorTurnoGanado);
 							empate=false;
 						}
+					jugadorTurnoGanado.setTurno(true);
+					jugadorPerdedor.setTurno(false);
 					System.out.println("----Ronda ganada por jugador "+ jugadorTurnoGanado.getNombre());
-					turno=1;
+					jugadorTurnoGanado.setTurno(true);
 					break;
 					
 				case GANA_SEGUNDA:
@@ -432,9 +453,11 @@ private static Mazo armarMazoGenerico()
 							baraja.transfiereCartasAlGanador(jugadorTurnoGanado);
 							empate=false;
 						}
+					jugadorTurnoGanado.setTurno(false);
+					jugadorPerdedor.setTurno(true);
 					baraja.intercambiaCaras(jugadorPerdedor, jugadorTurnoGanado);
 					System.out.println("----Ronda ganada por  "+ jugadorPerdedor.getNombre());
-					turno=2;
+				
 					break;
 					
 				default:
