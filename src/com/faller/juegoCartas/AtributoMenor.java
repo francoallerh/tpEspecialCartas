@@ -16,15 +16,19 @@ public class AtributoMenor extends Atributo {
 	public int competencia(Atributo atriCarta2) {
 
 		System.out.println("Atributo por el cual se compite: " + getNombre()
-				+ "\n" + "Contienda: " + getContienda() + "\n");
+				+ "\n" + "Contienda1: " + atriCarta2.getContienda() + "\n"+ getValor() );
+		System.out.println("Atributo por el cual se compite: " + atriCarta2.getNombre()
+				+ "\n" + "Contienda 2: " + atriCarta2.getContienda() + "\n" + atriCarta2.getValor());
 
 		if (getValor() < atriCarta2.getValor()) {
 			return 1;
 		} else if (getValor() == atriCarta2.getValor()) {
 			return 0;
 		}
-
-		return 2;
+		 else if 	(getValor() > atriCarta2.getValor()) {
+			 return 2;
+		 }
+		return 222;
 	}	 
 
 }

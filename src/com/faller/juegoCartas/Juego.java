@@ -358,7 +358,6 @@ private static Mazo armarMazoGenerico()
 		this.p2 = p2;
 	}
 	
-
 	public String jugar() {
 		juegoConPosimas();
 		
@@ -417,24 +416,24 @@ private static Mazo armarMazoGenerico()
 				System.out.println("Jugador "+p1.getNombre()+" :"+p1.getCarta(0).obtieneAtributo(atributoAcompetir).getValor() +"\n"+"Jugador  "+p2.getNombre()+" :"+p2.getCarta(0).obtieneAtributo(atributoAcompetir).getValor()+"\n");
 				switch (rescarta) {
 				case GANA_PRIMERA:
-					baraja.intercambiaCaras(p1, p2);
+					baraja.intercambiaCaras(jugadorTurnoGanado, jugadorPerdedor);
 					if(baraja.cartasEnJuegoTieneCartas())
 						{
-							baraja.transfiereCartasAlGanador(p1);
+							baraja.transfiereCartasAlGanador(jugadorTurnoGanado);
 							empate=false;
 						}
-					System.out.println("----Ronda ganada por jugador "+ p1.getNombre());
+					System.out.println("----Ronda ganada por jugador "+ jugadorTurnoGanado.getNombre());
 					turno=1;
 					break;
 					
 				case GANA_SEGUNDA:
 					if(baraja.cartasEnJuegoTieneCartas())
 						{
-							baraja.transfiereCartasAlGanador(p2);
+							baraja.transfiereCartasAlGanador(jugadorTurnoGanado);
 							empate=false;
 						}
-					baraja.intercambiaCaras(p2, p1);
-					System.out.println("----Ronda ganada por  "+ p2.getNombre());
+					baraja.intercambiaCaras(jugadorPerdedor, jugadorTurnoGanado);
+					System.out.println("----Ronda ganada por  "+ jugadorPerdedor.getNombre());
 					turno=2;
 					break;
 					
@@ -448,6 +447,7 @@ private static Mazo armarMazoGenerico()
 					p2.borrarCarta(p2.getCarta(0));
 					break;
 				}
+				
 			}while((empate==true)&&(p1.tieneCartas() && p2.tieneCartas()));
 				if((empate==true)&&( !p1.tieneCartas() && !p2.tieneCartas()))
 					{
@@ -464,7 +464,8 @@ private static Mazo armarMazoGenerico()
 
 private int Competencia(Jugador jugadorTurnoGanado, Jugador jugadorPerdedor, String atributoAcompetir)
 	{
-	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).competencia(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));	 
+	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).competencia(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));		
+	
 	}
 
 	
