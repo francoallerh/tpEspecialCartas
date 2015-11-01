@@ -1,9 +1,9 @@
 package com.faller.juegoCartas;
 
-public class PosimaNoCompuesta extends PosionGenerica {
+public abstract class PocimaNoCompuesta extends PocionGenerica {
 private double valor;
 
-public PosimaNoCompuesta(String nombre,Double valor){
+public PocimaNoCompuesta(String nombre,Double valor){
 	super(nombre);
 	this.valor=valor;
 	
@@ -20,11 +20,13 @@ public void setValor(Double valor) {
 
 
 @Override
-public void calcular(Atributo a) {
-	a.setValor(a.getValor());
+public abstract void calcular(Atributo a);
+
+
+
 }
 
 
 
 
-}
+

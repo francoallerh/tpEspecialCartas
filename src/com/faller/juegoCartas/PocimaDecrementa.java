@@ -1,8 +1,8 @@
 package com.faller.juegoCartas;
 
-public class PosimaDecrementa extends PosimaNoCompuesta {
+public class PocimaDecrementa extends PocimaNoCompuesta {
 	
-public PosimaDecrementa(String nombre, double valor){
+public PocimaDecrementa(String nombre, double valor){
 	super(nombre, valor);
 }
 	

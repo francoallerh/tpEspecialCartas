@@ -1,10 +1,9 @@
 package com.faller.juegoCartas;
 
-public class PosimaSelectivaAtributo extends PosimaNoCompuesta {
+public class PocimaSelectivaAtributo extends PocimaNoCompuesta {
 
-	public PosimaSelectivaAtributo(String nombre, Double valor) {
+	public PocimaSelectivaAtributo(String nombre, Double valor) {
 		super(nombre, valor);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

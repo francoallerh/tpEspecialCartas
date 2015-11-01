@@ -1,9 +1,9 @@
 package com.faller.juegoCartas;
 
-public abstract class PosionGenerica {
+public abstract class PocionGenerica {
 	private String nombre;
 	
-	public PosionGenerica(String nombre) {
+	public PocionGenerica(String nombre) {
 		this.nombre=nombre;
 	}
 	public String getNombre() {

@@ -1,8 +1,8 @@
 package com.faller.juegoCartas;
 
-public class PosimaIncrementa extends PosimaNoCompuesta {
+public class PocimaIncrementa extends PocimaNoCompuesta {
 
-	public PosimaIncrementa(String nombre, Double valor) {
+	public PocimaIncrementa(String nombre, Double valor) {
 		super(nombre, valor);
 		// TODO Auto-generated constructor stub
 	}

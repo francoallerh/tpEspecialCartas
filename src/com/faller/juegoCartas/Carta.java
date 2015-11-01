@@ -8,7 +8,7 @@ public class Carta {
 	private String nombre;
 	private int cantidadAtributos;
 	private ArrayList<Atributo> atributos;
-	private PosionGenerica posion=new PosimaNoCompuesta("lala",0.0);
+	private PocionGenerica posion=new PocimaInoqua();
 	
 	public Carta(String nombre,int cantidadAtributos) {
 		this.nombre = nombre.toUpperCase();
@@ -26,7 +26,7 @@ public class Carta {
 	public String getNombre() {
 		return nombre;
 	}
-public void SetPosima(PosionGenerica p){
+public void SetPosima(PocionGenerica p){
 	this.posion=p;
 }
 	public void setNombre(String nombre) {

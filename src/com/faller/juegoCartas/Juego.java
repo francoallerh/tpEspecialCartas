@@ -21,6 +21,7 @@ public class Juego {
 	private static Mazo baraja;
 	private Jugador p1;
 	private Jugador p2;
+	private ArrayList<PocionGenerica> pocimas;
 	
 
 	
@@ -114,6 +115,111 @@ private static Mazo armarMazoDesdeArchivo()
     } 
     
 }
+public void juegoConPosimas(){
+	//se pregunta si se desea agregar posimas al juego, si se desea entonces se instancian 
+		//estas cartas y se llama a repartir cartas aleatoreas
+	pocimas=new ArrayList<PocionGenerica>();
+	
+	
+
+	
+	/********************PosimaDecrementa*****************************/
+
+	PocionGenerica posion4=new PocimaDecrementa("choripan",10.0);
+	PocionGenerica posion5=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion6=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion7=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion8=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion9=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion10=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion11=new PocimaDecrementa("choripan",100.0);
+	PocionGenerica posion12=new PocimaDecrementa("choripan",100.0);
+
+
+
+	/********************PosimaIncrementa*****************************/
+	PocionGenerica posion17=new PocimaIncrementa("choripan",100.0);
+	PocionGenerica posion18=new PocimaIncrementa("choripan",50.0);
+	PocionGenerica posion19=new PocimaIncrementa("choripan",50.0);
+	PocionGenerica posion20=new PocimaIncrementa("choripan",50.0);
+	
+	/********************PosimaValorFijo*****************************/
+	PocionGenerica posion21= new PocimaValorFijo("PosimaValorFijo1");
+	PocionGenerica posion22= new PocimaValorFijo("PosimaValorFijo2");
+	PocionGenerica posion23= new PocimaValorFijo("PosimaValorFijo3");
+	PocionGenerica posion24= new PocimaValorFijo("PosimaValorFijo4");
+	
+	/********************PocimaSelectivaAtributo*****************************/
+	PocionGenerica posion25= new PocimaSelectivaAtributo("fuerza",35.00);
+	PocionGenerica posion26= new PocimaSelectivaAtributo("peso",43.00);
+	PocionGenerica posion27= new PocimaSelectivaAtributo("peleasganadas",50.00);
+	PocionGenerica posion28= new PocimaSelectivaAtributo("fuerza",35.00);
+	
+	/********************PocimaIlimitada​*****************************/
+	PocionGenerica posion32= new PocimaIlimitada​("PocimaIimitada1");
+	PocionGenerica posion29= new PocimaIlimitada​("PocimaIimitada2");
+	PocionGenerica posion30= new PocimaIlimitada​("PocimaIimitada3");
+	PocionGenerica pocion31= new PocimaIlimitada​("PocimaIimitada4");
+	
+	
+	/********************PosimaCocktail*****************************/
+	PocimaCocktail posion13= new PocimaCocktail("cokt1",posion12);
+	PocimaCocktail posion14= new PocimaCocktail("cokt1",posion12);
+	PocimaCocktail posion15= new PocimaCocktail("cokt1",posion12);
+	PocimaCocktail posion16= new PocimaCocktail("cokt1",posion12);
+	
+	
+	posion14.agregarPosion(posion5);
+	
+	posion13.agregarPosion(posion4);
+	posion13.agregarPosion(posion17);
+	posion13.agregarPosion(posion21);
+	posion13.agregarPosion(posion25);
+	posion13.agregarPosion(posion21);
+	posion13.agregarPosion(posion32);
+	posion13.agregarPosion(posion14);
+	
+
+	posion15.agregarPosion(posion6);
+	posion16.agregarPosion(posion7);
+	
+	//posion13.agregarPosion(posion4);
+	agregarPocion(posion8);
+	agregarPocion(posion9);
+	agregarPocion(posion10);
+	agregarPocion(posion11);
+	agregarPocion(posion12);
+	agregarPocion(posion13);
+	agregarPocion(posion14);
+	agregarPocion(posion15);
+	agregarPocion(posion16);
+	agregarPocion(posion18);
+	agregarPocion(posion19);
+	agregarPocion(posion20);
+	agregarPocion(posion22);
+	agregarPocion(posion23);
+	agregarPocion(posion24);
+	agregarPocion(posion26);
+	agregarPocion(posion27);
+	agregarPocion(posion28);
+	agregarPocion(posion29);
+	agregarPocion(posion30);
+	agregarPocion(pocion31);
+	
+	 repartePosimas();
+}
+
+private void repartePosimas(){
+	int cantidad=baraja.cantCartas();
+	for(int i=0;i<cantidad;i++){
+		Carta c=baraja.getCarta(i);
+		if((pocimas.size()!=0)){
+			if((enteroRandom(1,8)==1)){
+				c.SetPosima(pocimas.get(0));
+				pocimas.remove(0);
+			}}
+	}
+}
 
 
 public static Carta armaCartaDeArchivo(String[] valores) {
@@ -134,6 +240,10 @@ public static Carta armaCartaDeArchivo(String[] valores) {
        return c;
 }
 
+
+public void agregarPocion(PocionGenerica p){
+	pocimas.add(p);
+}
 
 private static Mazo armarMazoGenerico()
 		{
@@ -250,43 +360,8 @@ private static Mazo armarMazoGenerico()
 	
 
 	public String jugar() {
-
-PosionGenerica posion=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion2=new PosimaIncrementa("choripan",100.0);
-PosionGenerica posion3=new PosimaIncrementa("choripan",50.0);
-PosionGenerica posion4=new PosimaDecrementa("choripan",10.0);
-PosionGenerica posion5=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion6=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion7=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion8=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion9=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion10=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion11=new PosimaDecrementa("choripan",100.0);
-PosionGenerica posion12=new PosimaDecrementa("choripan",100.0);
-PosimaCocktail posion13= new PosimaCocktail("cokt1",posion12);
-PosionGenerica posion14= new PosimaCocktail("cokt1",posion12);
-PosionGenerica posion15= new PosimaCocktail("cokt1",posion12);
-PosionGenerica posion16= new PosimaCocktail("cokt1",posion12);
-PosionGenerica posion17= new PosimaValorFijo("impuesto");
-posion13.agregarPosion(posion17);
-posion13.agregarPosion(posion2);
-posion13.agregarPosion(posion3);
-posion13.agregarPosion(posion4);
-//posion13.agregarPosion(posion4);
-baraja.agregarPocion(posion13);
-
-//baraja.agregarPocion(posion);
-//baraja.agregarPocion(posion2);
-//baraja.agregarPocion(posion3);
-//baraja.agregarPocion(posion4);
-//baraja.agregarPocion(posion5);
-//baraja.agregarPocion(posion6);
-//baraja.agregarPocion(posion7);
-//baraja.agregarPocion(posion8);
-//baraja.agregarPocion(posion9);
-//baraja.agregarPocion(posion10);
-//baraja.agregarPocion(posion11);
-baraja.agregarPocion(posion13);
+		juegoConPosimas();
+		
 		if (baraja.mazoCorrecto()) {	
 			int cuentaRondas=0;
 			baraja.repartirMazo(p1, p2);
