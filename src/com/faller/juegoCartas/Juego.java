@@ -116,7 +116,10 @@ public  Mazo armarMazoDesdeArchivo() throws IOException
         			{
 			            Carta c=armaCartaDeArchivo(valores);
 			            baraja.agregarCarta(c);
-        			}else{fin=true;}
+        			}else{
+        				fin=true;
+        				br.close();
+        				}
         	posNombre++;
         	read=br.readLine();
         	}
