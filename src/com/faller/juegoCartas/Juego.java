@@ -12,6 +12,9 @@ import java.util.Random;
 
 
 public class Juego {
+	private static final int CANT_ATRIBUTOS_MINIMOS=4;
+	private static final int  CANT_ATRIBUTOS_MAXIMOS=7;
+	
 	public static final int GANA_PRIMERA = 1;
 	public static final int GANA_SEGUNDA = 2;
 	public static final int EMPATE = 0;
@@ -255,14 +258,14 @@ public  Mazo armarMazoGenerico()
 				totalCartas= cargaInt();
 				
 				}while(totalCartas%2!=0);
-				baraja=new Mazo(nombreMazo, totalCartas);
+				baraja=new Mazo(nombreMazo);
 			
 			int cartasCreadas=0;
 			int cantAtrisElegidos=0;
 			do{
 				System.out.print("ingrese la cantidad de atributos. debera ser un numero >3 y <8");
 				cantAtrisElegidos=cargaInt();
-				}while(!((cantAtrisElegidos>=4 ) && (cantAtrisElegidos<=7)));
+				}while((cantAtrisElegidos>=CANT_ATRIBUTOS_MINIMOS ) ||(cantAtrisElegidos<=CANT_ATRIBUTOS_MAXIMOS));
 				do{
 					int cantidadAtributos=0;
 					String nombrep = "Personaje-"+cartasCreadas;
@@ -318,7 +321,7 @@ public  Mazo armarMazoGenerico()
 								}
 					cantidadAtributos=0;
 					cartasCreadas++;
-				   	}while(cartasCreadas!=baraja.getCantidad());
+				   	}while(cartasCreadas!=baraja.cantCartas());
 			}while(baraja.mazoCorrecto()==false);
 			return baraja;
 		}
@@ -399,31 +402,6 @@ public  Mazo armarMazoGenerico()
 					}
 		}
 				
-//				switch(turno)
-//					{
-//						case TURNO_JUGADOR_1:
-//						System.out.println("Turno de:"+p1.getNombre()+"\n");
-//						atributoAcompetir=p1.randomAtributo();
-//						jugadorTurnoGanado=p1;
-//						jugadorPerdedor=p2;
-//						break;
-//						
-//						case TURNO_JUGADOR_2:
-//						System.out.println("Turno de:"+p1.getNombre()+"\n");
-//						atributoAcompetir=p2.randomAtributo();
-//						jugadorPerdedor=p1;
-//						jugadorTurnoGanado=p2;
-//						break;
-//						
-//						default:
-//						if((baraja.cartasEnJuegoTieneCartas()))
-//							{
-//								atributoEnJuego=atributoAcompetir;	
-//							}else{
-//									atributoAcompetir=p1.randomAtributo();
-//								}
-//						
-//					}
 				jugadorTurnoGanado=p1;
 			jugadorPerdedor=p2;
 				rescarta=Competencia(jugadorTurnoGanado, jugadorPerdedor,atributoAcompetir);
