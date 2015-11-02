@@ -15,24 +15,18 @@ public class Juego {
 	public static final int GANA_PRIMERA = 1;
 	public static final int GANA_SEGUNDA = 2;
 	public static final int EMPATE = 0;
-	public static final int TURNO_JUGADOR_1 = 1;
-	public static final int TURNO_JUGADOR_2 =2;
-	private int turno;
-	private static Mazo baraja;
+	private  Mazo baraja;
 	private Jugador p1;
 	private Jugador p2;
 	private ArrayList<PocionGenerica> pocimas;
 	
 
 	
-	public Juego(String nombrep1, String nombrep2, Mazo baraja)
-		{
-			this.p1 = new Jugador(nombrep1);
-			this.p2 = new Jugador(nombrep2);
-			this.baraja=baraja; 
 
-
-		 }
+	public Juego(String nombrep1, String nombrep2) {
+		this.p1 = new Jugador(nombrep1);
+		this.p2 = new Jugador(nombrep2);
+	}
 	public static void main(String[] args)
 	{
 		String nombrep1;
@@ -52,21 +46,24 @@ public class Juego {
 				mazoAcrear= cargaInt();
 				
 		  }while(mazoAcrear!=1 && mazoAcrear!=2);
-		
+		Juego j=new Juego(nombrep1,nombrep2);
 		 if(mazoAcrear==2)
 			{
-			 	 baraja=armarMazoGenerico();
+			 	 Mazo b= j.armarMazoGenerico();
+
+					j.setBaraja(b);
 			}else{
-				 baraja=armarMazoDesdeArchivo();
+				Mazo b= j.armarMazoDesdeArchivo();
+
+				j.setBaraja(b);
 				 }
 		
 	
-				Juego j=new Juego(nombrep1,nombrep2, baraja);
 				System.out.print(j.jugar());
 	}
 		
 
-private static Mazo armarMazoDesdeArchivo()
+public  Mazo armarMazoDesdeArchivo()
 		{
 	 int mazoDefault=-1;
 	 String ruta;
@@ -222,7 +219,7 @@ private void repartePosimas(){
 }
 
 
-public static Carta armaCartaDeArchivo(String[] valores) {
+public  Carta armaCartaDeArchivo(String[] valores) {
 	String nombre=valores[0];
 	Carta c= new Carta(nombre);
 	int cantidadAt=0;
@@ -245,7 +242,7 @@ public void agregarPocion(PocionGenerica p){
 	pocimas.add(p);
 }
 
-private static Mazo armarMazoGenerico()
+public  Mazo armarMazoGenerico()
 		{
 		do{
 				
@@ -327,7 +324,7 @@ private static Mazo armarMazoGenerico()
 			return baraja;
 		}
 	
-	private static int enteroRandom(int min, int max) {
+	public  int enteroRandom(int min, int max) {
 		Random rand = new Random();
 		return (rand.nextInt((max - min) + 1) + min);
 	}
@@ -492,7 +489,7 @@ private int Competencia(Jugador jugadorTurnoGanado, Jugador jugadorPerdedor, Str
 	}
 
 	
-	private static String cargaStr()
+	private static  String cargaStr()
 		{
 			BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 			boolean error=false;
