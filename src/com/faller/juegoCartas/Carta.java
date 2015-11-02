@@ -80,30 +80,25 @@ public void SetPosima(PocionGenerica p){
 			
 			if((this.cantAtributos()>=CANT_ATRIBUTOS_MINIMOS) && (this.cantAtributos()<=CANT_ATRIBUTOS_MAXIMOS)) 
 				{
-					if(this.cantAtributos()==this.getCantidadAtributos())
-						{
-							if ((this.cantAtributos() == aux.cantAtributos())) 
+							if ((this.atributos.size() == aux.cantAtributos())) 
 								{
-									int i=0;
-									for (Atributo a : this.atributos)
+									for (Atributo a : this.atributos)//compara que los atributos de un carta 
+																	//esten en orden y que se llamen igual
 										{
 										for (Atributo b : aux.atributos)
 											{
 												if(a.getNombre().equals(b.getNombre()))
 													{
-														i++;
+														
 														if(!(a.getContienda().equals(b.getContienda()))){return false;}
 													}												
 
 											}
-										if(i==0 || i>1){return false;}
-										i=0;
 										}
 								return true;
 								}System.out.print("todas las cartas no tienen la misma cantidad de atributos o no son del mismo tipo."+"\n");
 							return false;
-				}return false;
-					
+				
 					
 					}else{System.out.print("La cantidad de atributos no esta dentro del rango."+"\n");
 						return false;
