@@ -30,7 +30,7 @@ public class Juego {
 		this.p1 = new Jugador(nombrep1);
 		this.p2 = new Jugador(nombrep2);
 	}
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
 		String nombrep1;
 		String nombrep2;
@@ -64,19 +64,42 @@ public class Juego {
 	
 				System.out.print(j.jugar());
 	}
+	private int controlaPathMazoACrear(String path){
+
+		 int correcto=0;
+	    try {
+	   	 InputStream is=new FileInputStream(path);
+	     return 1;
+	      
+	    } catch (FileNotFoundException ex) {
+	        System.out.println("no se encontro el archivo");
+	        return 2;
+	    } catch (IOException ex) {
+	        System.out.println("conflicto acceso archivo");
+	        return 2;
+	    } 
+	}
 		
+	
 
-public  Mazo armarMazoDesdeArchivo()
+public  Mazo armarMazoDesdeArchivo() throws IOException
 		{
-	 int mazoDefault=-1;
+	 int  PathCorrecto=0;
 	 String ruta;
-	 while(mazoDefault!=1 && mazoDefault!=2){System.out.println ("desea cargar maso por defecto. si=1 , no=2");mazoDefault=cargaInt();}
-		if(mazoDefault==1){ruta="/home/francoe/TUDAIprogra2/prog2/src/com/faller/juegoCartas/cartas.txt";}
-		else{  ruta= cargaStr(); }
-
-    
-    try {
-        InputStream is= new FileInputStream(ruta);
+	// ruta="/home/francoe/TUDAIprogra2/prog2/src/com/faller/juegoCartas/cartas.txt
+	 InputStream is=null;
+	 while(PathCorrecto!=1 ){
+		 System.out.println("ingrese el path del archivo.");
+	 ruta= cargaStr();
+	 PathCorrecto= controlaPathMazoACrear(ruta);
+	 if(PathCorrecto!=1){
+		 System.out.println("ha ingresado mal la ruta, verifiquelo y vuelva a intertar");
+	 }else{
+		 is=new FileInputStream(ruta);
+	 }
+	  
+	 }
+	 
         InputStreamReader isr=new InputStreamReader(is);
         BufferedReader br= new BufferedReader(isr);
          
@@ -97,24 +120,22 @@ public  Mazo armarMazoDesdeArchivo()
         	posNombre++;
         	read=br.readLine();
         	}
-        
-    	System.out.print(baraja.toString());
+
         if((baraja.cantCartas())%2==0){
         	return	baraja;
        }else{
     	   	System.out.print("debe de ingresar un numero par de cartas. Modifique el archivo y ejecute nuevamente el programa.");
     	   	System.exit(0);  
     	   	return baraja;}
-    } catch (FileNotFoundException ex) {
-        System.out.println("no se encontro el archivo");
-        return baraja;
-    } catch (IOException ex) {
-        System.out.println("conflicto acceso archivo");
-        return baraja;
-    } 
+    }
     
-}
+
 public void juegoConPosimas(){
+int jugar=-1;
+	while(jugar!=1 && jugar!=2){
+		System.out.print("Desea jugar con pocimas?, 1=SI , 2=NO");
+		jugar=Juego.cargaInt();
+		if(jugar==1){
 	//se pregunta si se desea agregar posimas al juego, si se desea entonces se instancian 
 		//estas cartas y se llama a repartir cartas aleatoreas
 	pocimas=new ArrayList<PocionGenerica>();
@@ -206,6 +227,8 @@ public void juegoConPosimas(){
 	agregarPocion(pocion31);
 	
 	 repartePosimas();
+		}
+	}
 }
 
 private void repartePosimas(){
