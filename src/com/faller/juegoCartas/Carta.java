@@ -5,6 +5,9 @@ import java.util.*;
 
 public class Carta {
 
+	private static final int CANT_ATRIBUTOS_MINIMOS=4;
+	private static final int  CANT_ATRIBUTOS_MAXIMOS=7;
+	
 	private String nombre;
 	private int cantidadAtributos;
 	private ArrayList<Atributo> atributos;
@@ -75,7 +78,7 @@ public void SetPosima(PocionGenerica p){
 		if (o instanceof Carta) {
 			Carta aux = (Carta)o;
 			
-			if((this.cantAtributos()>=4) && (this.cantAtributos()<=7)) 
+			if((this.cantAtributos()>=CANT_ATRIBUTOS_MINIMOS) && (this.cantAtributos()<=CANT_ATRIBUTOS_MAXIMOS)) 
 				{
 					if(this.cantAtributos()==this.getCantidadAtributos())
 						{
