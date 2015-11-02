@@ -97,7 +97,6 @@ public  Mazo armarMazoDesdeArchivo()
         
     	System.out.print(baraja.toString());
         if((baraja.cantCartas())%2==0){
-        	baraja.setCantidad(baraja.cantCartas());
         	return	baraja;
        }else{
     	   	System.out.print("debe de ingresar un numero par de cartas. Modifique el archivo y ejecute nuevamente el programa.");
@@ -380,7 +379,7 @@ public  Mazo armarMazoGenerico()
 			do{
 				cuentaRondas++;
 				System.out.print("---------------------------------"+"\n"+"Comienza Ronda "+cuentaRondas+"\n"+"---------------------------------"+"\n");
-				System.out.print("Cantidad de cartas jugador "+p1.getNombre()+" :"+p1.totalDcartas() +"\n"+"Cantidad de cartas jugador "+p2.getNombre()+" :"+p2.totalDcartas()+"\n");
+				System.out.print("Cantidad de cartas jugador "+p1.getNombre()+" :"+p1.cantCartas() +"\n"+"Cantidad de cartas jugador "+p2.getNombre()+" :"+p2.cantCartas()+"\n");
 		if(p1.isTurno()){
 			System.out.println("Turno de:"+p1.getNombre()+"\n");
 			atributoAcompetir=p1.randomAtributo();
@@ -471,7 +470,7 @@ public  Mazo armarMazoGenerico()
 			}while((empate==true)&&(p1.tieneCartas() && p2.tieneCartas()));
 				if((empate==true)&&( !p1.tieneCartas() && !p2.tieneCartas()))
 					{
-						System.out.print("Cantidad de cartas jugador 1: "+p1.totalDcartas() +"\n"+"Cantidad de cartas jugador 2 "+ p2.totalDcartas()+"\n");
+						System.out.print("Cantidad de cartas jugador 1: "+p1.cantCartas() +"\n"+"Cantidad de cartas jugador 2 "+ p2.cantCartas()+"\n");
 						return "-------------------------"+"\n"+" Termino el juego: Empate. ";
 					}
 				}	

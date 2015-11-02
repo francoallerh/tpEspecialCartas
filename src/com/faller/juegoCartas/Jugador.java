@@ -7,12 +7,12 @@ import java.util.Random;
 
 public class Jugador {
 	private String nombre;
-	private ArrayList<Carta> cartas;
+	private MazoPozo pozo;
 	private boolean turno;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;
-		cartas = new ArrayList<Carta>();
+		pozo = new MazoPozo("nombre");
 	}
 
 	public String getNombre() {
@@ -24,15 +24,15 @@ public class Jugador {
 	}
 
 	public Carta getCarta(int c) {
-		return cartas.get(c);
+		return pozo.getCarta(c);
 	}
 	public int cantCartas()
 	{
-	return  cartas.size();
+	return  pozo.cantCartas();
 	}
 
-	public void setCartas(ArrayList<Carta> cartas) {
-		this.cartas = cartas;
+	public void setCartas(MazoPozo cartas) {
+		this.pozo = cartas;
 	}
 	public String randomAtributo() {
 		int aux = getCarta(0).cantAtributos();
@@ -41,42 +41,23 @@ public class Jugador {
 		
 	}
 	
-	public void agregarCarta(Carta a)
+	public void agregarCarta(Carta c)
 		{
-			cartas.add(a);
+			pozo.agregarCarta(c);
 		}
 	
 	public void borrarCarta(Carta a) {
-		cartas.remove(a);
+		pozo.borrarCarta(a);
 	}
 	
-	public void borrarCartas() {
-		cartas.clear();
-	}
+
 	
 	public boolean tieneCartas() {
-		if (cartas.isEmpty()) {
-			return false;
-		}
-		return true;
+		return pozo.tieneCartas();
+			
+	
 	}
 	
-	public Carta obtenerCarta(String nombre) {
-		for (Carta c : cartas) {
-			if(c.getNombre() == nombre.toLowerCase()) {
-				return c;
-			}
-		}
-		return null;
-	}
-	
-	public int totalDcartas() {
-		int i = 0;
-		for (Carta c : cartas) {
-			i++;
-			}
-		return i;
-	}
 
 	public boolean isTurno() {
 		return turno;
