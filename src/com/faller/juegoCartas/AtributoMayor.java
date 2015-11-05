@@ -14,11 +14,10 @@ public class AtributoMayor extends Atributo {
 	}
 	
 	@Override
-	public int competencia(Atributo atriCarta2) {
+	public int compara(Atributo atriCarta2) {
 
 		System.out.println("Atributo por el cual se compite: " + getNombre()
-				+ "\n" + "Contienda1: " + atriCarta2.getContienda() + "\n"+ getValor() );
-		
+				+ "\n" + "Contienda1: " + getContienda() + "\n" );
 		if (getValor() > atriCarta2.getValor()) {
 			return 1;
 		} else if (getValor() == atriCarta2.getValor()) {

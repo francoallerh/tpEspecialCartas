@@ -14,6 +14,10 @@ import java.util.Random;
 public class Juego {
 	private static final int CANT_ATRIBUTOS_MINIMOS=4;
 	private static final int  CANT_ATRIBUTOS_MAXIMOS=7;
+	private static final int RANDOM_POSIMA =1;
+	private static final int FIN_RANDOM_POSIMAS =8;
+	private static final int INICIO_RANDOM_POSIMAS=4;
+	
 	
 	public static final int GANA_PRIMERA = 1;
 	public static final int GANA_SEGUNDA = 2;
@@ -26,30 +30,31 @@ public class Juego {
 
 	
 
-	public Juego(String nombrep1, String nombrep2) {
-		this.p1 = new Jugador(nombrep1);
-		this.p2 = new Jugador(nombrep2);
+	public Juego() {
+		this.p1 = new Jugador("jugador1");
+		this.p2 = new Jugador("nombrep2");
 	}
 	public static void main(String[] args) throws IOException
 	{
+		Juego j=new Juego();
 		String nombrep1;
 		String nombrep2;
 		do{			
 				System.out.println ("Ingrese nombre jugador 1");
-				 nombrep1= cargaStr();
+				 nombrep1= j.cargaStr();
 		
 				System.out.println ("Ingrese nombre jugador 2");
-				nombrep2= cargaStr();
+				nombrep2= j.cargaStr();
 				
 			}while(nombrep1.equals(nombrep2) && nombrep2.equals(nombrep1) );
 	
 		int mazoAcrear=0;
 		do{
 				System.out.println ("Si desea cargar un mazo modelo desde un archivo, entonces presione 1.  Si desea crear el maso precione generico, entonces presione 2");
-				mazoAcrear= cargaInt();
+				mazoAcrear= j.cargaInt();
 				
 		  }while(mazoAcrear!=1 && mazoAcrear!=2);
-		Juego j=new Juego(nombrep1,nombrep2);
+	
 		 if(mazoAcrear==2)
 			{
 			 	 Mazo b= j.armarMazoGenerico();
@@ -86,7 +91,7 @@ public  Mazo armarMazoDesdeArchivo() throws IOException
 		{
 	 int  PathCorrecto=0;
 	 String ruta;
-	// ruta="/home/francoe/TUDAIprogra2/prog2/src/com/faller/juegoCartas/cartas.txt
+	System.out.print("/home/francoe/TUDAIprogra2/prog2/src/com/faller/juegoCartas/cartas.txt"+ "\n");
 	 InputStream is=null;
 	 while(PathCorrecto!=1 ){
 		 System.out.println("ingrese el path del archivo.");
@@ -118,12 +123,12 @@ public  Mazo armarMazoDesdeArchivo() throws IOException
 			            baraja.agregarCarta(c);
         			}else{
         				fin=true;
-        				br.close();
+        			
         				}
         	posNombre++;
         	read=br.readLine();
         	}
-
+    	br.close();
         if((baraja.cantCartas())%2==0){
         	return	baraja;
        }else{
@@ -137,7 +142,7 @@ public void juegoConPosimas(){
 int jugar=-1;
 	while(jugar!=1 && jugar!=2){
 		System.out.print("Desea jugar con pocimas?, 1=SI , 2=NO");
-		jugar=Juego.cargaInt();
+		jugar=cargaInt();
 		if(jugar==1){
 	//se pregunta si se desea agregar posimas al juego, si se desea entonces se instancian 
 		//estas cartas y se llama a repartir cartas aleatoreas
@@ -239,7 +244,7 @@ private void repartePosimas(){
 	for(int i=0;i<cantidad;i++){
 		Carta c=baraja.getCarta(i);
 		if((pocimas.size()!=0)){
-			if((enteroRandom(1,8)==1)){
+			if((enteroRandom(INICIO_RANDOM_POSIMAS,FIN_RANDOM_POSIMAS)==RANDOM_POSIMA)){
 				c.SetPosima(pocimas.get(0));
 				pocimas.remove(0);
 			}}
@@ -383,18 +388,18 @@ public  Mazo armarMazoGenerico()
 		this.p2 = p2;
 	}
 	
-	public String jugar() {
-		juegoConPosimas();
-		
+	public String jugar() {	
 		if (baraja.mazoCorrecto()) {	
+			juegoConPosimas();
 			int cuentaRondas=0;
 			baraja.repartirMazo(p1, p2);
 			int rescarta;
 			boolean empate=false; 
-			String atributoEnJuego="";	
+			p1.setTurno(true);
+			String atributoEnJuego="";//es usada cuando tengo un empate seteo esta variable para segur compitiendo por el mismo atributo
 			String atributoAcompetir="";
-			Jugador	jugadorTurnoGanado;
-			Jugador	jugadorPerdedor;
+			Jugador	jugadorTurnoGanado=p1;
+			Jugador	jugadorPerdedor=p2;
 			
 			while (p1.tieneCartas() || p2.tieneCartas()) {
 	
@@ -419,19 +424,12 @@ public  Mazo armarMazoGenerico()
 			atributoAcompetir=p2.randomAtributo();
 			jugadorPerdedor=p1;
 			jugadorTurnoGanado=p2;
-		}else{
-			if((baraja.cartasEnJuegoTieneCartas()))
+		}else if((baraja.cartasEnJuegoTieneCartas()))
 				{
-					atributoEnJuego=atributoAcompetir;	
-				}else{
-						atributoAcompetir=p1.randomAtributo();
-					}
-		}
-				
-				jugadorTurnoGanado=p1;
-			jugadorPerdedor=p2;
+					atributoEnJuego=atributoAcompetir;	// atributo que es acarreado cuando se produce un empate, ya que debe de competirse con el mismo atributo
+				}
+		
 				rescarta=Competencia(jugadorTurnoGanado, jugadorPerdedor,atributoAcompetir);
-				//rescarta =j1.getCarta(0).obtieneAtributo(atributoAcompetir).competencia(j2.getCarta(0).obtieneAtributo(atributoAcompetir));
 				System.out.println("Jugador "+p1.getNombre()+" :"+p1.getCarta(0).obtieneAtributo(atributoAcompetir).getValor() +"\n"+"Jugador  "+p2.getNombre()+" :"+p2.getCarta(0).obtieneAtributo(atributoAcompetir).getValor()+"\n");
 				switch (rescarta) {
 				case GANA_PRIMERA:
@@ -461,15 +459,17 @@ public  Mazo armarMazoGenerico()
 					break;
 					
 				default:
-					System.out.println("----Ronda con empate----");
-					atributoAcompetir=atributoAcompetir;	
+					System.out.println("----Ronda con empate----");	
 					empate=true;
 					baraja.agregarCartaEnJuego(p1.getCarta(0));
 					p1.borrarCarta(p1.getCarta(0));
 					baraja.agregarCartaEnJuego(p2.getCarta(0));
 					p2.borrarCarta(p2.getCarta(0));
+					jugadorTurnoGanado.setTurno(false);
+					jugadorPerdedor.setTurno(false);
 					break;
 				}
+				
 				
 			}while((empate==true)&&(p1.tieneCartas() && p2.tieneCartas()));
 				if((empate==true)&&( !p1.tieneCartas() && !p2.tieneCartas()))
@@ -487,12 +487,12 @@ public  Mazo armarMazoGenerico()
 
 private int Competencia(Jugador jugadorTurnoGanado, Jugador jugadorPerdedor, String atributoAcompetir)
 	{
-	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).competencia(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));		
+	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).compara(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));		
 	
 	}
 
 	
-	private static  String cargaStr()
+	private  String cargaStr()
 		{
 			BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 			boolean error=false;
@@ -511,7 +511,7 @@ private int Competencia(Jugador jugadorTurnoGanado, Jugador jugadorPerdedor, Str
 				return ingreso;
 			}
 			
-			public static int cargaInt()
+			public  int cargaInt()
 			{
 			BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
 			boolean error=false;
