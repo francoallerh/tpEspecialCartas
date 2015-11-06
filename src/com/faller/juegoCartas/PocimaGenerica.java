@@ -1,9 +1,9 @@
 package com.faller.juegoCartas;
 
-public abstract class PocionGenerica {
+public abstract class PocimaGenerica {
 	private String nombre;
 	
-	public PocionGenerica(String nombre) {
+	public PocimaGenerica(String nombre) {
 		this.nombre=nombre;
 	}
 	public String getNombre() {
@@ -20,6 +20,6 @@ public abstract class PocionGenerica {
 		return "PosionGenerica [nombre=" + nombre + "]";
 	}
 
-
+	public abstract PocimaGenerica miCopiar();
 
 }

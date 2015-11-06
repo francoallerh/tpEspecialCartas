@@ -9,16 +9,11 @@ public class Carta {
 	private static final int  CANT_ATRIBUTOS_MAXIMOS=7;
 	
 	private String nombre;
-	private int cantidadAtributos;
+
 	private ArrayList<Atributo> atributos;
-	private PocionGenerica posion=new PocimaInoqua();
+	private PocimaGenerica posion=new PocimaInoqua();
 	
-	public Carta(String nombre,int cantidadAtributos) {
-		this.nombre = nombre.toUpperCase();
-		this.cantidadAtributos=cantidadAtributos;
-		atributos = new ArrayList<Atributo>();
-		
-	}
+
 
 	public Carta(String nombre) {
 		this.nombre = nombre.toUpperCase();
@@ -29,7 +24,7 @@ public class Carta {
 	public String getNombre() {
 		return nombre;
 	}
-public void SetPosima(PocionGenerica p){
+public void SetPosima(PocimaGenerica p){
 	this.posion=p;
 }
 	public void setNombre(String nombre) {
@@ -78,9 +73,9 @@ public void SetPosima(PocionGenerica p){
 		if (o instanceof Carta) {
 			Carta aux = (Carta)o;
 			
-			if((this.cantAtributos()>=CANT_ATRIBUTOS_MINIMOS) && (this.cantAtributos()<=CANT_ATRIBUTOS_MAXIMOS)) 
+			if((this.cantAtributos()>=CANT_ATRIBUTOS_MINIMOS) && (this.cantAtributos()<=CANT_ATRIBUTOS_MAXIMOS))//compara que la cantidad de atributos de la carta modelo cumpla con la cantidad de atributos definida para el juego  
 				{
-							if ((this.atributos.size() == aux.cantAtributos())) 
+							if ((this.atributos.size() == aux.cantAtributos()))//corrobora que la carta modelo como la carta a compararse cpntra esta tengan la misma cantidad de atributos
 								{
 									for (Atributo a : this.atributos)//compara que los atributos de un carta 
 																	//esten en orden y que se llamen igual
@@ -107,20 +102,21 @@ public void SetPosima(PocionGenerica p){
 		return false;
 	}
 	
-
+	private ArrayList<Atributo>  aplicarPosimaTodosLosAtributos(){
+		ArrayList<Atributo> atri=new ArrayList<>() ;
+		for(Atributo a: atributos){
+			Atributo aux;
+			aux=a.copiar();
+			posion.calcular(aux);
+			atri.add(aux);
+		}
+		return atri;
+	}
 	@Override
 	public String toString() {
-		return "Carta [nombre=" + nombre + ", cantidadAtributos="
-				+ cantidadAtributos + ", atributos=" + atributos + ", posion="
-				+ posion + "]";
+		return "Carta [nombre=" + nombre + ", atributos=" +  aplicarPosimaTodosLosAtributos() + "]";
 	}
 
-	public int getCantidadAtributos() {
-		return cantidadAtributos;
-	}
-	public void setCantidadAtributos(int cantidadAtributos) {
-		this.cantidadAtributos = cantidadAtributos;
-	}
 
 	
 

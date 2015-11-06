@@ -1,6 +1,6 @@
 package com.faller.juegoCartas;
 
-public abstract class PocimaNoCompuesta extends PocionGenerica {
+public abstract class PocimaNoCompuesta extends PocimaGenerica {
 private double valor;
 
 public PocimaNoCompuesta(String nombre,Double valor){

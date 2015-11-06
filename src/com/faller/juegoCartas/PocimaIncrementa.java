@@ -12,7 +12,10 @@ public class PocimaIncrementa extends PocimaNoCompuesta {
 		a.setValor(a.getValor()+((a.getValor()*super.getValor()/100)));
 
 	}
-
+	public PocimaGenerica miCopiar(){
+		PocimaGenerica pcopy= new PocimaIncrementa(super.getNombre(), super.getValor());
+		return pcopy;
+	}
 }
 
 

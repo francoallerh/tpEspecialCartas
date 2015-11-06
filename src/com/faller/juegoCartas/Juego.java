@@ -14,10 +14,6 @@ import java.util.Random;
 public class Juego {
 	private static final int CANT_ATRIBUTOS_MINIMOS=4;
 	private static final int  CANT_ATRIBUTOS_MAXIMOS=7;
-	private static final int RANDOM_POSIMA =1;
-	private static final int FIN_RANDOM_POSIMAS =8;
-	private static final int INICIO_RANDOM_POSIMAS=4;
-	
 	
 	public static final int GANA_PRIMERA = 1;
 	public static final int GANA_SEGUNDA = 2;
@@ -25,7 +21,7 @@ public class Juego {
 	private  Mazo baraja;
 	private Jugador p1;
 	private Jugador p2;
-	private ArrayList<PocionGenerica> pocimas;
+//	private ArrayList<PocimaGenerica> pocimas;
 	
 
 	
@@ -47,25 +43,27 @@ public class Juego {
 				nombrep2= j.cargaStr();
 				
 			}while(nombrep1.equals(nombrep2) && nombrep2.equals(nombrep1) );
+		j.p1.setNombre(nombrep1);
+		j.p2.setNombre(nombrep2);
 	
-		int mazoAcrear=0;
-		do{
-				System.out.println ("Si desea cargar un mazo modelo desde un archivo, entonces presione 1.  Si desea crear el maso precione generico, entonces presione 2");
-				mazoAcrear= j.cargaInt();
-				
-		  }while(mazoAcrear!=1 && mazoAcrear!=2);
-	
-		 if(mazoAcrear==2)
-			{
-			 	 Mazo b= j.armarMazoGenerico();
-
-					j.setBaraja(b);
-			}else{
+//		int mazoAcrear=0;
+//		do{
+//				System.out.println ("Si desea cargar un mazo modelo desde un archivo, entonces presione 1.  Si desea crear el maso precione generico, entonces presione 2");
+//				mazoAcrear= j.cargaInt();
+//				
+//		  }while(mazoAcrear!=1 && mazoAcrear!=2);
+//	
+//		 if(mazoAcrear==2)
+//			{
+//			 	 Mazo b= j.armarMazoGenerico();
+//
+//					j.setBaraja(b);
+//			}else{
 				Mazo b= j.armarMazoDesdeArchivo();
-
-				j.setBaraja(b);
-				 }
-		
+//
+//				j.setBaraja(b);
+//				 }
+//		
 	
 				System.out.print(j.jugar());
 	}
@@ -146,48 +144,48 @@ int jugar=-1;
 		if(jugar==1){
 	//se pregunta si se desea agregar posimas al juego, si se desea entonces se instancian 
 		//estas cartas y se llama a repartir cartas aleatoreas
-	pocimas=new ArrayList<PocionGenerica>();
+//	pocimas=new ArrayList<PocimaGenerica>();
 	
 	
 
 	
 	/********************PosimaDecrementa*****************************/
 
-	PocionGenerica posion4=new PocimaDecrementa("choripan",10.0);
-	PocionGenerica posion5=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion6=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion7=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion8=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion9=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion10=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion11=new PocimaDecrementa("choripan",100.0);
-	PocionGenerica posion12=new PocimaDecrementa("choripan",100.0);
+	PocimaGenerica posion4=new PocimaDecrementa("choripan",10.22);
+	PocimaGenerica posion5=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion6=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion7=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion8=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion9=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion10=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion11=new PocimaDecrementa("choripan",98.22);
+	PocimaGenerica posion12=new PocimaDecrementa("choripan",98.22);
 
 
 
 	/********************PosimaIncrementa*****************************/
-	PocionGenerica posion17=new PocimaIncrementa("choripan",100.0);
-	PocionGenerica posion18=new PocimaIncrementa("choripan",50.0);
-	PocionGenerica posion19=new PocimaIncrementa("choripan",50.0);
-	PocionGenerica posion20=new PocimaIncrementa("choripan",50.0);
+	PocimaGenerica posion17=new PocimaIncrementa("choripan",1115080.22);
+	PocimaGenerica posion18=new PocimaIncrementa("choripan",1115050.40);
+	PocimaGenerica posion19=new PocimaIncrementa("choripan",1115050.30);
+	PocimaGenerica posion20=new PocimaIncrementa("choripan",11150.50);
 	
 	/********************PosimaValorFijo*****************************/
-	PocionGenerica posion21= new PocimaValorFijo("PosimaValorFijo1");
-	PocionGenerica posion22= new PocimaValorFijo("PosimaValorFijo2");
-	PocionGenerica posion23= new PocimaValorFijo("PosimaValorFijo3");
-	PocionGenerica posion24= new PocimaValorFijo("PosimaValorFijo4");
+	PocimaGenerica posion21= new PocimaValorFijo("PosimaValorFijo1");
+	PocimaGenerica posion22= new PocimaValorFijo("PosimaValorFijo2");
+	PocimaGenerica posion23= new PocimaValorFijo("PosimaValorFijo3");
+	PocimaGenerica posion24= new PocimaValorFijo("PosimaValorFijo4");
 	
 	/********************PocimaSelectivaAtributo*****************************/
-	PocionGenerica posion25= new PocimaSelectivaAtributo("fuerza",35.00);
-	PocionGenerica posion26= new PocimaSelectivaAtributo("peso",43.00);
-	PocionGenerica posion27= new PocimaSelectivaAtributo("peleasganadas",50.00);
-	PocionGenerica posion28= new PocimaSelectivaAtributo("fuerza",35.00);
+	PocimaGenerica posion25= new PocimaSelectivaAtributo("fuerza",35.00);
+	PocimaGenerica posion26= new PocimaSelectivaAtributo("peso",43.00);
+	PocimaGenerica posion27= new PocimaSelectivaAtributo("peleasganadas",50.00);
+	PocimaGenerica posion28= new PocimaSelectivaAtributo("fuerza",35.00);
 	
 	/********************PocimaIlimitada​*****************************/
-	PocionGenerica posion32= new PocimaIlimitada​("PocimaIimitada1");
-	PocionGenerica posion29= new PocimaIlimitada​("PocimaIimitada2");
-	PocionGenerica posion30= new PocimaIlimitada​("PocimaIimitada3");
-	PocionGenerica pocion31= new PocimaIlimitada​("PocimaIimitada4");
+	PocimaGenerica posion32= new PocimaIlimitada​("PocimaIimitada1",20,10);
+	PocimaGenerica posion29= new PocimaIlimitada​("PocimaIimitada2",20,10);
+	PocimaGenerica posion30= new PocimaIlimitada​("PocimaIimitada3",20,10);
+	PocimaGenerica pocion31= new PocimaIlimitada​("PocimaIimitada4",20,10);
 	
 	
 	/********************PosimaCocktail*****************************/
@@ -212,44 +210,32 @@ int jugar=-1;
 	posion16.agregarPosion(posion7);
 	
 	//posion13.agregarPosion(posion4);
-	agregarPocion(posion8);
-	agregarPocion(posion9);
-	agregarPocion(posion10);
-	agregarPocion(posion11);
-	agregarPocion(posion12);
-	agregarPocion(posion13);
-	agregarPocion(posion14);
-	agregarPocion(posion15);
-	agregarPocion(posion16);
-	agregarPocion(posion18);
-	agregarPocion(posion19);
-	agregarPocion(posion20);
-	agregarPocion(posion22);
-	agregarPocion(posion23);
-	agregarPocion(posion24);
-	agregarPocion(posion26);
-	agregarPocion(posion27);
-	agregarPocion(posion28);
-	agregarPocion(posion29);
-	agregarPocion(posion30);
-	agregarPocion(pocion31);
+	baraja.agregarPocion(posion8);
+	baraja.agregarPocion(posion9);
+	baraja.agregarPocion(posion10);
+	baraja.agregarPocion(posion11);
+	baraja.agregarPocion(posion12);
+	baraja.agregarPocion(posion13);
+	baraja.agregarPocion(posion14);
+	baraja.agregarPocion(posion15);
+	baraja.agregarPocion(posion16);
+	baraja.agregarPocion(posion18);
+	baraja.agregarPocion(posion19);
+	baraja.agregarPocion(posion20);
+	baraja.agregarPocion(posion22);
+	baraja.agregarPocion(posion23);
+	baraja.agregarPocion(posion24);
+	baraja.agregarPocion(posion26);
+	baraja.agregarPocion(posion27);
+	baraja.agregarPocion(posion28);
+	baraja.agregarPocion(posion29);
+	baraja.agregarPocion(posion30);
+	baraja.agregarPocion(pocion31);
 	
-	 repartePosimas();
 		}
 	}
 }
 
-private void repartePosimas(){
-	int cantidad=baraja.cantCartas();
-	for(int i=0;i<cantidad;i++){
-		Carta c=baraja.getCarta(i);
-		if((pocimas.size()!=0)){
-			if((enteroRandom(INICIO_RANDOM_POSIMAS,FIN_RANDOM_POSIMAS)==RANDOM_POSIMA)){
-				c.SetPosima(pocimas.get(0));
-				pocimas.remove(0);
-			}}
-	}
-}
 
 
 public  Carta armaCartaDeArchivo(String[] valores) {
@@ -266,96 +252,94 @@ public  Carta armaCartaDeArchivo(String[] valores) {
         			 Atributo a=new AtributoMayor(new String(valores[i]),new Double(valores[i+1]),new String(valores[i+3]),new String(valores[i+2]));
         			 c.agregarAtributo(a);
         			}
-        }c.setCantidadAtributos(cantidadAt);       
+        };       
        return c;
 }
 
 
-public void agregarPocion(PocionGenerica p){
-	pocimas.add(p);
-}
 
-public  Mazo armarMazoGenerico()
-		{
-		do{
-				
-				String nombreMazo;
-				System.out.println ("Ingrese tipo de Mazo: ");
-				nombreMazo= cargaStr();
-				
-				int totalCartas=-1;
-				do{
-				System.out.println ("Ingrese cartas totales del mazo(numero par)");
-				totalCartas= cargaInt();
-				
-				}while(totalCartas%2!=0);
-				baraja=new Mazo(nombreMazo);
-			
-			int cartasCreadas=0;
-			int cantAtrisElegidos=0;
-			do{
-				System.out.print("ingrese la cantidad de atributos. debera ser un numero >3 y <8");
-				cantAtrisElegidos=cargaInt();
-				}while((cantAtrisElegidos>=CANT_ATRIBUTOS_MINIMOS ) ||(cantAtrisElegidos<=CANT_ATRIBUTOS_MAXIMOS));
-				do{
-					int cantidadAtributos=0;
-					String nombrep = "Personaje-"+cartasCreadas;
-					Carta c=new Carta(nombrep,cantAtrisElegidos);
-					baraja.agregarCarta(c);
-					if((baraja.cantCartas()==1))
-						{
-						 do{
-								
-							System.out.print("ingrese nombre del atributo");
-							String nombreAtri=cargaStr();
-							String contiendaAtri;
-							int valor1;
-							int valor2;
-							do{
-							System.out.print("Se dara un valor random para el atributo, ingrese el rango de los valores para hacer el random. EL primer valor debe ser mayor al segundo valor ingresado."+"\n");
-							System.out.print("Ingrese valor 1");
-							valor1=cargaInt();
-							System.out.print("Ingrese valor 2");
-							valor2=cargaInt();
-							}while(valor1>valor2);
-
-							do{
-								 System.out.print("ingrese contienda del atributo");
-								 contiendaAtri=cargaStr();
-								}while(!(contiendaAtri.equals(">")||contiendaAtri.equals("<")));
-									
-								System.out.print("ingrese unidad del atributo");
-								String unidadAtri=cargaStr();
-								if(contiendaAtri.equals(">"))
-									{
-									c.agregarAtributo(new AtributoMayor(nombreAtri, enteroRandom(valor1, valor2),contiendaAtri,unidadAtri));
-									}else{
-											c.agregarAtributo(new AtributoMenor(nombreAtri, enteroRandom(valor1, valor2),contiendaAtri,unidadAtri));
-									 		}
-								cantidadAtributos++;
-						   }while(cantidadAtributos!=c.getCantidadAtributos());
-							 cantidadAtributos=0;
-						}else{
-							
-							  do{
-									
-										Atributo a= baraja.getCarta(0).getAtributo(cantidadAtributos);
-										if(a.getContienda().equals(">"))
-											{
-												c.agregarAtributo(new AtributoMayor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
-											}else{
-													c.agregarAtributo(new AtributoMenor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
-												 }
-									cantidadAtributos++;
-								   }while((cantAtrisElegidos!=cantidadAtributos));
-							
-								}
-					cantidadAtributos=0;
-					cartasCreadas++;
-				   	}while(cartasCreadas!=baraja.cantCartas());
-			}while(baraja.mazoCorrecto()==false);
-			return baraja;
-		}
+//
+//public  Mazo armarMazoGenerico()
+//		{
+//		do{
+//				
+//				String nombreMazo;
+//				System.out.println ("Ingrese tipo de Mazo: ");
+//				nombreMazo= cargaStr();
+//				
+//				int totalCartas=-1;
+//				do{
+//				System.out.println ("Ingrese cartas totales del mazo(numero par)");
+//				totalCartas= cargaInt();
+//				
+//				}while(totalCartas%2!=0);
+//				baraja=new Mazo(nombreMazo);
+//			
+//			int cartasCreadas=0;
+//			int cantAtrisElegidos=0;
+//			do{
+//				System.out.print("ingrese la cantidad de atributos. debera ser un numero >3 y <8");
+//				cantAtrisElegidos=cargaInt();
+//				}while((cantAtrisElegidos>=CANT_ATRIBUTOS_MINIMOS ) ||(cantAtrisElegidos<=CANT_ATRIBUTOS_MAXIMOS));
+//				do{
+//					int cantidadAtributos=0;
+//					String nombrep = "Personaje-"+cartasCreadas;
+//					Carta c=new Carta(nombrep,cantAtrisElegidos);
+//					baraja.agregarCarta(c);
+//					if((baraja.cantCartas()==1))
+//						{
+//						 do{
+//								
+//							System.out.print("ingrese nombre del atributo");
+//							String nombreAtri=cargaStr();
+//							String contiendaAtri;
+//							int valor1;
+//							int valor2;
+//							do{
+//							System.out.print("Se dara un valor random para el atributo, ingrese el rango de los valores para hacer el random. EL primer valor debe ser mayor al segundo valor ingresado."+"\n");
+//							System.out.print("Ingrese valor 1");
+//							valor1=cargaInt();
+//							System.out.print("Ingrese valor 2");
+//							valor2=cargaInt();
+//							}while(valor1>valor2);
+//
+//							do{
+//								 System.out.print("ingrese contienda del atributo");
+//								 contiendaAtri=cargaStr();
+//								}while(!(contiendaAtri.equals(">")||contiendaAtri.equals("<")));
+//									
+//								System.out.print("ingrese unidad del atributo");
+//								String unidadAtri=cargaStr();
+//								if(contiendaAtri.equals(">"))
+//									{
+//									c.agregarAtributo(new AtributoMayor(nombreAtri, enteroRandom(valor1, valor2),contiendaAtri,unidadAtri));
+//									}else{
+//											c.agregarAtributo(new AtributoMenor(nombreAtri, enteroRandom(valor1, valor2),contiendaAtri,unidadAtri));
+//									 		}
+//								cantidadAtributos++;
+//						   }while(cantidadAtributos!=c.getCantidadAtributos());
+//							 cantidadAtributos=0;
+//						}else{
+//							
+//							  do{
+//									
+//										Atributo a= baraja.getCarta(0).getAtributo(cantidadAtributos);
+//										if(a.getContienda().equals(">"))
+//											{
+//												c.agregarAtributo(new AtributoMayor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
+//											}else{
+//													c.agregarAtributo(new AtributoMenor(a.getNombre(),enteroRandom(2, 200) ,a.getContienda() ,a.getUnidad()));
+//												 }
+//									cantidadAtributos++;
+//								   }while((cantAtrisElegidos!=cantidadAtributos));
+//							
+//								}
+//					cantidadAtributos=0;
+//					cartasCreadas++;
+//				   	}while(cartasCreadas!=baraja.cantCartas());
+//			}while(baraja.mazoCorrecto()==false);
+//			return baraja;
+//		}
 	
 	public  int enteroRandom(int min, int max) {
 		Random rand = new Random();
@@ -392,7 +376,9 @@ public  Mazo armarMazoGenerico()
 		if (baraja.mazoCorrecto()) {	
 			juegoConPosimas();
 			int cuentaRondas=0;
+			System.out.print(baraja.toString());
 			baraja.repartirMazo(p1, p2);
+			
 			int rescarta;
 			boolean empate=false; 
 			p1.setTurno(true);
@@ -476,9 +462,11 @@ public  Mazo armarMazoGenerico()
 					{
 						System.out.print("Cantidad de cartas jugador 1: "+p1.cantCartas() +"\n"+"Cantidad de cartas jugador 2 "+ p2.cantCartas()+"\n");
 						return "-------------------------"+"\n"+" Termino el juego: Empate. ";
+						
 					}
-				}	
-		
+				
+			}	
+			
 		}
 
 		return "El mazo no es correcto.";
@@ -487,7 +475,7 @@ public  Mazo armarMazoGenerico()
 
 private int Competencia(Jugador jugadorTurnoGanado, Jugador jugadorPerdedor, String atributoAcompetir)
 	{
-	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).compara(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));		
+	return jugadorTurnoGanado.getCarta(0).obtieneAtributo(atributoAcompetir).compite(jugadorPerdedor.getCarta(0).obtieneAtributo(atributoAcompetir));		
 	
 	}
 

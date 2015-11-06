@@ -14,7 +14,7 @@ public class AtributoMayor extends Atributo {
 	}
 	
 	@Override
-	public int compara(Atributo atriCarta2) {
+	public int compite(Atributo atriCarta2) {
 
 		System.out.println("Atributo por el cual se compite: " + getNombre()
 				+ "\n" + "Contienda1: " + getContienda() + "\n" );

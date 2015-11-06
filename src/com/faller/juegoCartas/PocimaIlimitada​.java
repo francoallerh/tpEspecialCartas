@@ -1,23 +1,27 @@
 package com.faller.juegoCartas;
 
-public class PocimaIlimitada​ extends PocionGenerica {
-private int decremento=2;
-private static final int PRIMER_DECREMENTO=20;
-private static final int SEGUNDO_DECREMENTO=10;
+public class PocimaIlimitada​ extends PocimaDecrementa {
+private int decremento=1;
+private double segundo_decremento;
 
-	public PocimaIlimitada​(String nombre){
-		super(nombre);
+	public PocimaIlimitada​(String nombre,double primerDecremento, double segundo_decremento){
+		super(nombre,primerDecremento);
+		this.segundo_decremento=segundo_decremento;
 	}
 	
 	@Override
 	public void calcular(Atributo a) {
-		if(decremento==2){
-			decremento=1;
-			a.setValor(a.getValor()+((a.getValor()*PRIMER_DECREMENTO/100)));
-		}else if(decremento==1){
-			a.setValor(a.getValor()+((a.getValor()*SEGUNDO_DECREMENTO/100)));
+		if(decremento==1){
+		super.calcular(a);
+		decremento=2;
+		}else if(decremento==2){
+			a.setValor(a.getValor()+((a.getValor()*segundo_decremento/100)));
+			decremento=3;
 		}
 
 	}
-
+	public PocimaGenerica miCopiar(){
+		PocimaGenerica pcopy= new PocimaIlimitada​(super.getNombre(), super.getValor(), this.segundo_decremento);
+		return pcopy;
+	}
 }

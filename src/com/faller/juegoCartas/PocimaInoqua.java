@@ -1,6 +1,6 @@
 package com.faller.juegoCartas;
 
-public class PocimaInoqua extends PocionGenerica{
+public class PocimaInoqua extends PocimaGenerica{
 
 
 
@@ -11,5 +11,8 @@ public class PocimaInoqua extends PocionGenerica{
 	public void calcular(Atributo a) {
 		
 	}
-
+	public PocimaGenerica miCopiar(){
+		PocimaGenerica pcopy= new PocimaInoqua();
+		return pcopy;
+	}
 }

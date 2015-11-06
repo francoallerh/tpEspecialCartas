@@ -67,5 +67,7 @@ public class Jugador {
 		this.turno = turno;
 	}
 
+
+
 	
 }

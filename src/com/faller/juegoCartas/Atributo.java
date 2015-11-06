@@ -60,6 +60,6 @@ public abstract class Atributo implements Comparable<Atributo> {
 				+ ", operacion=" + contienda + ", unidad=" + unidad + "]";
 	}
 
-	public abstract int compara(Atributo atriCarta2);
+	public abstract int compite(Atributo atriCarta2);
 
 }

@@ -1,8 +1,10 @@
 SuperHeroes,
-mas de un poder,superman,altura,205.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
-poder especifico,spiderman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
-poder especifico,capitanamerica,altura,505.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
-poder especifico,batman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
+superman,altura,205.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
+spiderman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
+capitanamerica,altura,505.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
+batman,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
+plutonio,altura,505.00,cm,<,peso,130.00,kg,>,fuerza,200.00,kg,>,peleasganadas,9930.00,val,<,velocidad,400.00,km,>,
+pantera,altura,2205.00,cm,<,peso,1360.00,kg,>,fuerza,2070.00,kg,>,peleasganadas,99730.00,val,<,velocidad,400.00,km,>,
 finArchivo
 
 

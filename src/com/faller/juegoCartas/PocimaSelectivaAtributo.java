@@ -14,5 +14,8 @@ public class PocimaSelectivaAtributo extends PocimaNoCompuesta {
 		
 		
 	}
-
+	public PocimaGenerica miCopiar(){
+		PocimaGenerica pcopy= new PocimaSelectivaAtributo(this.getNombre(), this.getValor());
+		return pcopy;
+	}
 }

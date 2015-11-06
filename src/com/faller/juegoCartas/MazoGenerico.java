@@ -103,6 +103,16 @@ private boolean existeCarta(Carta x)
 		return i;
 	}
 
+
+	@Override
+	public String toString() {
+		return "MazoGenerico [nombre=" + nombre + ", cartas=" + cartas
+				+ ", getNombre()=" + getNombre() + ", cantCartas()="
+				+ cantCartas() + ", mazoCorrecto()=" + mazoCorrecto()
+				+ ", tieneCartas()=" + tieneCartas() + ", totalDcartas()="
+				+ totalDcartas() + "]";
+	}
+
 	
 
 }

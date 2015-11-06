@@ -36,15 +36,15 @@ public class Vocabulario {
 	
 	public Iterator<String> iteradorAlfabetico(boolean reverse){
 		Comparator<Map.Entry<String, Integer>> c = new ComparadorPalabra();
-		if (reverse)
-			c = c.reversed();
+		if (reverse){}
+			//c = c.reversed();
 		return new IteradorVocabulario(palabras.entrySet(), c);
 	}
 	
 	public Iterator<String> iteradorFrecuencia(boolean reverse){
 		Comparator<Map.Entry<String, Integer>> c = new ComparadorFrecuencia();
-		if (reverse)
-			c = c.reversed();
+		if (reverse){}
+			//c = c.reversed();
 		return new IteradorVocabulario(palabras.entrySet(), c);
 	}
 	

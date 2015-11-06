@@ -11,5 +11,8 @@ public class  PocimaValorFijo extends PocimaNoCompuesta {
 	public void calcular(Atributo a) {
 		 a.setValor(super.getValor());
 	}
-
+	public PocimaGenerica miCopiar(){
+		PocimaGenerica pcopy= new PocimaValorFijo(this.getNombre());
+		return pcopy;
+	}
 }

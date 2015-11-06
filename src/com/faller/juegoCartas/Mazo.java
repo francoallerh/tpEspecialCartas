@@ -15,24 +15,50 @@ import java.io.InputStreamReader;
 
 
 public class Mazo extends MazoGenerico{
+	private static final int RANDOM_POSIMA =1;
+	private static final int FIN_RANDOM_POSIMAS =3;
+	private static final int INICIO_RANDOM_POSIMAS=1;
+	
    	private ArrayList<Carta> cartasEnJuego;
-
+	private ArrayList<PocimaGenerica> pocimas;
+   	
 public Mazo(String nombre) {
 	super(nombre);
 		cartasEnJuego=new ArrayList<Carta>();
+		pocimas=new ArrayList<PocimaGenerica>();
 	}
+
+
+
+
 
 	public void repartirMazo(Jugador p1, Jugador p2) {
 		int i=0;
 		while(i<cantCartas())
 			{
 			Carta cartaArepartir = getCarta(i);
+			if((pocimas.size()!=0)){
+				if((enteroRandom(INICIO_RANDOM_POSIMAS,FIN_RANDOM_POSIMAS)==RANDOM_POSIMA)){
+					cartaArepartir.SetPosima(pocimas.get(0));
+					pocimas.remove(0);
+				}
+			}
+			
 			if((i%2==0)){p1.agregarCarta(cartaArepartir); }
 			else{p2.agregarCarta(cartaArepartir);}
 			i++;
 			}
 		this.borrarCartas();
 	}
+	
+	public void agregarPocion(PocimaGenerica p){
+		pocimas.add(p);
+	}
+	public  int enteroRandom(int min, int max) {
+		Random rand = new Random();
+		return (rand.nextInt((max - min) + 1) + min);
+	}
+	
 	public Carta getCartaEnJuego(int c) {
 		return cartasEnJuego.get(c);
 	}
@@ -92,6 +118,25 @@ private boolean existeCarta(Carta x)
 		
 	}
 
+
+
+
+
+	@Override
+	public String toString() {
+		return "Mazo [cartasEnJuego=" + cartasEnJuego + ", getNombre()=" + getNombre() + ", cantCartas()="
+				+ cantCartas() + ", mazoCorrecto()=" + super.toString()+	 "]";
+	}
+
+
+
+
+
+
+
+
+
+	
 
 
 }
